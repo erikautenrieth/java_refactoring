@@ -3,7 +3,7 @@ package src.test.java;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import main.java.generators.StatementGenerator;
+import src.main.java.generators.StatementGenerator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

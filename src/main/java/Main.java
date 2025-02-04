@@ -3,7 +3,7 @@ package src.main.java;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import main.java.generators.StatementGenerator;
+import src.main.java.generators.StatementGenerator;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
