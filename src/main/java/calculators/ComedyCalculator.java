@@ -19,6 +19,7 @@ public class ComedyCalculator implements PerformanceCalculator {
 
     @Override
     public int getVolumeCredits() {
+        // Vergibt 1 Credit pro Zuschauer über 30 und zusätzlich 1 Extra-Credit für jeweils 5 Zuschauer.
         return Math.max(audience - 30, 0) + (int) Math.floor(audience / 5.0);
     }
 }

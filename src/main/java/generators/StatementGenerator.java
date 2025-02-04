@@ -9,11 +9,11 @@ import java.util.Locale;
 public class StatementGenerator {
 
     /**
-     * Erzeugt ein Statement aus den übergebenen JSON-Daten.
+     * Erzeugt ein Abrechnungsstatement für einen Kunden.
      *
-     * @param invoices JSON-Array mit Rechnungen.
-     * @param plays    JSON-Objekt mit Spieldefinitionen.
-     * @return Formatiertes Statement als String.
+     * @param invoices JSON-Array mit Rechnungsinformationen (Kunde, Aufführungen und Zuschaueranzahl).
+     * @param plays    JSON-Objekt mit Daten zu jedem Stück (Name, Typ).
+     * @return         Formatiertes Statement als String mit Summen zu Kosten und Credits.
      */
     public String generateStatement(JsonArray invoices, JsonObject plays) {
         int totalCost = 0;
@@ -33,6 +33,7 @@ public class StatementGenerator {
             JsonObject play = plays.get(playId).getAsJsonObject();
             String playType = play.get("type").getAsString();
 
+            // Erzeugt einen passenden Calculator für das Stück und berechnet Kosten und Credits.
             PerformanceCalculator calculator = CalculatorFactory.createCalculator(playType, audience);
             int playCost = calculator.getCost();
             int credits = calculator.getVolumeCredits();
@@ -47,12 +48,7 @@ public class StatementGenerator {
     }
 
     /**
-     * Erzeugt die Zeile für eine einzelne Performance.
-     *
-     * @param play     JSON-Objekt mit Spieldaten.
-     * @param audience Zuschauerzahl.
-     * @param playCost Kosten der Performance in Cent.
-     * @return Formatierte Zeile als String.
+     * Formatiert eine einzelne Performance-Zeile mit Stückname, Preis in Dollar und Zuschauerzahl.
      */
     private String generatePerformanceLine(JsonObject play, int audience, int playCost) {
         double costInDollars = playCost / 100.0;
@@ -61,11 +57,7 @@ public class StatementGenerator {
     }
 
     /**
-     * Erzeugt die Zusammenfassung des Statements.
-     *
-     * @param totalCost         Gesamtkosten in Cent.
-     * @param totalVolumeCredits Gesamte Credits.
-     * @return Formatierte Zusammenfassung als String.
+     * Erstellt eine Zusammenfassung mit dem gesamten zu zahlenden Betrag und den erworbenen Credits.
      */
     private String generateSummary(int totalCost, int totalVolumeCredits) {
         double totalCostDollars = totalCost / 100.0;

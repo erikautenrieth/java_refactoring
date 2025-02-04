@@ -18,6 +18,7 @@ public class TragedyCalculator implements PerformanceCalculator {
 
     @Override
     public int getVolumeCredits() {
+        // Vergibt 1 Credit pro Zuschauer über 30.
         return Math.max(audience - 30, 0);
     }
 }
