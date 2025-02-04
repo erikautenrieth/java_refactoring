@@ -1,7 +1,7 @@
-package main.java.generators;
+package src.main.java.generators;
 
-import main.java.calculators.CalculatorFactory;
-import main.java.calculators.PerformanceCalculator;
+import src.main.java.calculators.CalculatorFactory;
+import src.main.java.calculators.PerformanceCalculator;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.util.Locale;

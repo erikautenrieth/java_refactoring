@@ -1,4 +1,4 @@
-package main.java.calculators;
+package src.main.java.calculators;
 
 
 public class CalculatorFactory {
