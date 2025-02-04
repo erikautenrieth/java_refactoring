@@ -1,4 +1,4 @@
-package test.java;
+package src.test.java;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
